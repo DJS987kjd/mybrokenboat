@@ -1,0 +1,55 @@
+# My Broken Boat
+
+> Outboard Help: free, plain-English troubleshooting for common outboard boat motor problems. Each page has a short quick answer, likely causes, safe owner checks, parts/tools, when to call a marine mechanic, and source citations. General information only; specs are model-specific, so follow the owner's manual. When in doubt, see a marine mechanic.
+
+## Won't start
+
+- [Why won't my outboard crank when I turn the key?](https://mybrokenboat.com/problems/wont-crank/): Most often: kill-switch lanyard not attached, not in neutral (neutral safety switch), weak/dead battery. Start here: Confirm lanyard clip is seated on the stop switch. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why does my outboard crank but not start?](https://mybrokenboat.com/problems/cranks-wont-fire/): Most often: fuel not reaching engine: tank vent closed, empty tank, line not connected, primer bulb not pumped, clogged fuel filter / tank filter, stale or contaminated fuel. Start here: Open tank vent; confirm fuel level; reconnect hose fittings at both ends. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why does my outboard start and then die?](https://mybrokenboat.com/problems/starts-then-dies/): Most often: tank vent closed (vacuum builds), primer bulb/check valve failing or air leak in fuel line, partially clogged filter or carb idle jet. Start here: Open vent; loosen cap — if it runs on, vent was the cause. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [How do I fix outboard choke or enrichment problems?](https://mybrokenboat.com/problems/choke-enrichment/): Most often: cold start without choke/prime, choke left on after warm-up (flooding, soot), using choke on an already-warm engine. Start here: Follow your manual's cold-start sequence. Tohatsu small 4-strokes, for example: choke fully out, throttle to START, pull; push choke back once running; choke not needed when warm. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why won't my outboard pull-start cord work?](https://mybrokenboat.com/problems/pull-start-recoil/): Most often: not in neutral (start-in-gear lockout), rope won't retract: rewind spring slipped from slot, weak, or broken, starter housing bolt over-tightened after reinstall. Start here: Shift to neutral and retry. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+
+## Runs poorly
+
+- [Why does my outboard idle rough or surge?](https://mybrokenboat.com/problems/rough-idle/): Most often: gummed carb idle circuit (after storage), fouled plug / misfiring cylinder, air leak in fuel supply. Start here: Try fresh fuel with stabilizer/cleaner per label. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why does my outboard bog or stall when I throttle up?](https://mybrokenboat.com/problems/stalls-under-throttle/): Most often: fuel starvation: clogged filter, vent closed, kinked line, weak bulb, gummed carb main/accelerator circuit, water in fuel. Start here: Open vent, straighten hose, pump bulb while accelerating — improvement = supply issue. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why has my outboard lost power or won't plane?](https://mybrokenboat.com/problems/loss-of-power-wont-plane/): Most often: trim too far in/out, too much load or poor weight distribution, damaged or wrong-pitch prop, spun hub, fuel restriction. Start here: Check for warning lights first (overheat/oil/low-pressure modes cut power). If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why does my prop slip, ventilate, or cavitate?](https://mybrokenboat.com/problems/prop-cavitation-ventilation/): Most often: trimmed out too far (ventilation), engine mounted too high on transom, damaged prop or gearcase, missing diffuser ring. Start here: Trim down and re-test. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why is my outboard smoking so much?](https://mybrokenboat.com/problems/excessive-smoke/): Most often: normal briefly after fogging or during break-in (Tohatsu: double-oil break-in mix makes more smoke), 2-stroke oil mix too rich / oil injection fault, choke left on, poor carburetor adjustment, wrong spark plug. Start here: Note when and what colour: right after storage or break-in may be normal. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why do my outboard spark plugs keep fouling?](https://mybrokenboat.com/problems/spark-plug-fouling/): Most often: long idling/trolling, wrong plug heat range, too rich (choke, carb). Start here: Use plug type in manual (Honda notes wrong heat range can trigger overheat warning). If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+
+## Overheating & cooling
+
+- [Why is there no tell-tale (pee) stream from my outboard?](https://mybrokenboat.com/problems/no-telltale-stream/): Most often: telltale outlet plugged by debris/insects/salt, lower-unit water intake screens blocked (weeds, mud, bag), worn/failed water pump impeller. Start here: Shut engine off promptly if alarm or no stream. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why is my outboard overheating or sounding the alarm?](https://mybrokenboat.com/problems/overheating-alarm/): Most often: blocked water intake, failed impeller, stuck thermostat. Start here: Throttle down, neutral, shut off. Don't "baby it home." If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+
+## Fuel problems
+
+- [How do I tell if there's water in my outboard fuel?](https://mybrokenboat.com/problems/water-in-fuel/): Most often: condensation in vented tank, ethanol phase separation, leaking fuel fitting/line (odor). Start here: FUEL SMELL: stop, no sparks/smoking, ventilate, find leak before running. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [How do I fix a carburetor gummed up after storage?](https://mybrokenboat.com/problems/carb-gummed-after-storage/): Most often: old fuel evaporated, leaving varnish in jets, fuel left in carb bowl without stabilizer, ethanol attacking fuel parts. Start here: Drain carb bowl (manual procedure) and refill with fresh fuel. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [What problems does ethanol (E10) fuel cause in outboards?](https://mybrokenboat.com/problems/ethanol-fuel-issues/): Most often: e10 absorbs water → phase separation, e10 solvent action loosens tank debris into filters, incompatible old fiberglass tanks/hoses. Start here: Never use above E10 in outboards (Mercury, Honda). If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why won't my primer bulb firm up?](https://mybrokenboat.com/problems/primer-bulb/): Most often: air leak: loose connector or bad O-ring at quick-connect, failed check valves in bulb (installed backwards or worn), cracked hose or bulb. Start here: Bulb arrow points toward engine. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+
+## Electrical & controls
+
+- [Why is my outboard battery not charging?](https://mybrokenboat.com/problems/battery-charging/): Most often: loose battery cables (vibration loosens nuts) — techs say most engine problems are fuel or battery, corroded terminals, battery left connected/discharging between trips. Start here: Wiggle each cable at the terminal — it should not budge; tighten if it does. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why isn't my power trim/tilt working?](https://mybrokenboat.com/problems/trim-tilt/): Most often: blown PTT fuse, weak battery / loose or corroded connections, manual release valve not fully closed or leaking (appears in most rows of Suzuki's table). Start here: Check battery voltage and connections. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why is my outboard hard to shift or not shifting?](https://mybrokenboat.com/problems/shifting-problems/): Most often: shifting at above idle RPM, helm-to-engine shift cable stiff, kinked, or tight-radius bends, corrosion/binding at the engine-side linkage. Start here: Only shift at idle, with a firm, decisive motion. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Is my kill switch or lanyard stopping my outboard?](https://mybrokenboat.com/problems/kill-switch-lanyard/): Most often: lanyard clip missing/loose, wrong clip type, corroded/damaged stop switch or wiring. Start here: Attach lanyard and clip fully. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+
+## Seasonal care
+
+- [How do I winterize an outboard motor?](https://mybrokenboat.com/problems/winterizing/): Start here: Stabilize fuel and run in water so it circulates (Honda: ~10 min). If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [How do I start my outboard after winter storage?](https://mybrokenboat.com/problems/spring-startup/): Start here: Inspect fuel lines, bulb, clamps for cracks; replace hardened lines. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why is my outboard gear oil milky?](https://mybrokenboat.com/problems/gear-oil-milky/): Most often: prop shaft seal damaged by fishing line, worn seals, drain/vent screw gasket bad. Start here: Check prop shaft for fishing line. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+
+## Emergencies
+
+- [What do I do if my outboard was submerged?](https://mybrokenboat.com/problems/submerged-motor/): Most often: water in cylinders and electrics. Start here: Do not try to start it — risk of hydrolock. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+
+## Site
+
+- [Disclaimer](https://mybrokenboat.com/disclaimer/)
+- [About](https://mybrokenboat.com/about/)
+- [Contact](https://mybrokenboat.com/contact/)
