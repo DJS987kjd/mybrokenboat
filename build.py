@@ -54,7 +54,8 @@ def plain(s): return re.sub(r"[*_`]|\[([^\]]+)\]\([^)]+\)",r"\1",s)
 def sec(d,key):
     for s in d["sections"]:
         if s["h"].lower().startswith(key): return s
-CSS="""*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1b2733;background:#f7f9fb}
+CSS=""".newsletter{background:#fff;border:1px solid #dde5ec;border-radius:8px;padding:1rem;margin-top:2rem}.newsletter input[type=email]{padding:.5rem;font:inherit;min-width:16rem}.newsletter button{padding:.5rem 1rem;font:inherit;background:#0b3954;color:#fff;border:0;border-radius:4px}.fine{font-size:.85rem;opacity:.8}
+*{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1b2733;background:#f7f9fb}
 a{color:#0b5fa5}header{background:#0b3954;color:#fff}header .w{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.2rem;padding:.8rem 1rem}
 header a{color:#fff;text-decoration:none}.brand{font-weight:800;font-size:1.3rem}.tag{opacity:.8;font-size:.95rem}nav{margin-left:auto;display:flex;gap:1rem;font-size:.95rem}
 .w{max-width:52rem;margin:0 auto;padding:1rem}h1{line-height:1.25;font-size:1.7rem}h2{margin-top:1.8rem;font-size:1.25rem;border-bottom:2px solid #dde5ec}
@@ -69,10 +70,10 @@ def page(path,title,desc,body,ld=None,ogtype="website"):
 <title>{e(title)}</title><meta name="description" content="{e(desc)}"><link rel="canonical" href="{url}">
 <meta property="og:type" content="{ogtype}"><meta property="og:site_name" content="{NAME}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{url}">
 <meta name="twitter:card" content="summary"><link rel="stylesheet" href="/style.css">{lds}</head><body>
-<header><div class="w"><a class="brand" href="/">{NAME}</a><span class="tag">{TAG}</span><nav><a href="/">Problems</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav></div></header>
+<header><div class="w"><a class="brand" href="/">{NAME}</a><span class="tag">{TAG}</span><nav><a href="/">Problems</a><a href="/about/">About</a><a href="/newsletter/">Newsletter</a><a href="/contact/">Contact</a></nav></div></header>
 <main class="w">{SAFETY}{body}</main><footer><div class="w">&copy; {datetime.date.today().year} {NAME} &middot; {TAG} &middot; <a href="/disclaimer/">Disclaimer</a> &middot; <a href="/about/">About</a> &middot; <a href="/contact/">Contact</a><br>When in doubt, see a marine mechanic. Brand names are trademarks of their owners; no affiliation implied.</div></footer></body></html>"""
     f=OUT+path+("index.html" if path.endswith("/") else ""); os.makedirs(os.path.dirname(f),exist_ok=True); open(f,"w").write(h)
-NEWS='<section class="placeholder" id="newsletter"><!-- PLACEHOLDER: newsletter signup. No service wired up; see README.md --><h2>Newsletter (coming soon)</h2><p>Seasonal outboard tips by email. Signup is not active yet.</p></section>'
+NEWS='<section class="newsletter" id="newsletter"><h2>Get free outboard tips by email</h2><p>A short seasonal email with common fixes. No spam. Unsubscribe anytime.</p><form method="post" action="/api/subscribe"><label for="nl-email">Email</label> <input id="nl-email" type="email" name="email" required autocomplete="email" maxlength="254"><input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px"> <button type="submit">Subscribe</button></form><p class="fine">We\'ll email you a link to confirm. You\'re only added after you click it.</p></section>'
 def main():
     if os.path.isdir(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT); open(f"{OUT}/style.css","w").write(CSS)
@@ -123,9 +124,15 @@ def main():
       "<h1>What is My Broken Boat?</h1><p>My Broken Boat (Outboard Help) collects common outboard motor fixes from owner's manuals and manufacturer resources and explains them in plain English, so you can try the safe, simple checks first and know when it's time for a pro.</p><p>Every page lists its sources. Specs vary by make, model, and year, so your owner's manual always wins. We don't sell parts, and the site has no ads, affiliate links, or tracking.</p>"+NEWS)
     page("/contact/",f"Contact | {NAME}","Ask My Broken Boat a simple outboard troubleshooting question.",
       '<h1>How do I ask an outboard question?</h1><p>Tell us your motor\'s make, model, year, and what it\'s doing. We answer simple troubleshooting questions.</p><section class="placeholder" id="contact-form"><!-- PLACEHOLDER: contact form. Not connected to any service; see README.md --><h2>Contact form (coming soon)</h2><p>The question form isn\'t active yet. Please check back soon.</p><form onsubmit="return false" aria-disabled="true"><label>Email<br><input type="email" disabled></label><br><label>Motor make/model/year<br><input disabled></label><br><label>What\'s happening?<br><textarea rows="5" disabled></textarea></label><br><button disabled>Send (not active)</button></form></section>')
-    allp=["/","/about/","/contact/","/disclaimer/"]+[p for p,_,_ in pages]
+    page("/newsletter/",f"Newsletter | {NAME}","Sign up for free seasonal outboard motor tips from My Broken Boat.",
+      "<h1>Want outboard tips by email?</h1><p>Every so often we send a short email with the most common outboard problems people are asking about and how to fix them.</p><p id=\"nl-err\" hidden>Something went wrong or that link expired. Please try again.</p><script>if(location.search.includes('error'))document.getElementById('nl-err').hidden=false</script>"+NEWS)
+    page("/newsletter/check-email/",f"Check your email | {NAME}","Confirm your My Broken Boat newsletter signup from your inbox.",
+      "<h1>Check your email</h1><p>We sent you a confirmation link. Click it to finish signing up. If you don't see it, check spam.</p><p><a href=\"/\">Back to problems</a></p>")
+    page("/newsletter/confirmed/",f"You're subscribed | {NAME}","Your My Broken Boat newsletter subscription is confirmed.",
+      "<h1>You're subscribed</h1><p>Thanks! You'll get our next email. Every email has an unsubscribe link.</p><p><a href=\"/\">Back to problems</a></p>")
+    allp=["/","/about/","/contact/","/disclaimer/","/newsletter/"]+[p for p,_,_ in pages]
     open(f"{OUT}/sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>{BASE}{p}</loc><lastmod>{TODAY}</lastmod></url>\n" for p in allp)+"</urlset>\n")
-    open(f"{OUT}/robots.txt","w").write(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n")
+    open(f"{OUT}/robots.txt","w").write(f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /newsletter/check-email/\nDisallow: /newsletter/confirmed/\n\nSitemap: {BASE}/sitemap.xml\n")
     llm=f"# {NAME}\n\n> {TAG}: free, plain-English troubleshooting for common outboard boat motor problems. Each page has a short quick answer, likely causes, safe owner checks, parts/tools, when to call a marine mechanic, and source citations. General information only; specs are model-specific, so follow the owner's manual. When in doubt, see a marine mechanic.\n\n"
     for g in GROUPS:
         llm+=f"## {g}\n\n"+"".join(f"- [{q}]({BASE}{p}): {a}\n" for p,q,a in pages if Q["%s"%[s for s,d in probs.items() if d['path']==p][0]][1]==g)+"\n"
