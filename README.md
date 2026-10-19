@@ -1,36 +1,25 @@
-# My Broken Boat
+# My Broken Boat: static site (Outboard Help)
 
-My Broken Boat ([mybrokenboat.com](https://mybrokenboat.com)) is a static outboard motor troubleshooting site. Each page covers one common symptom in plain English: a short answer, likely causes, safe owner checks, parts and tools, when to call a marine mechanic, and the sources those checks come from.
+Build: `python3 build.py` (no dependencies; reads library/*.md, rebuilds site/ from scratch)
+Validate: `python3 validate.py` (JSON-LD parses, internal links and sitemap resolve, unique titles/descriptions, disclaimer/canonical/OG on every page)
+Output: `site/` is a plain static folder; Cloudflare Pages build command can be empty, output dir `site`.
 
-The articles live in `library/*.md`. `build.py` reads that library and writes a dependency-free static site into `site/` (HTML, CSS, `sitemap.xml`, `robots.txt`, and `llms.txt`). The published pages have no analytics, ads, affiliate links, or third-party scripts.
+LIVE on mybrokenboat.com (Cloudflare). No analytics, no affiliate links, no third-party scripts yet.
 
-## Build
+## Placeholders to wire up (David to choose)
+- Contact form: `site/contact/` → `<section id="contact-form">` (marked PLACEHOLDER; inputs are disabled).
+  Free options: a Cloudflare Pages Function (`functions/contact.js`) that emails or stores to KV/D1; Formspree free tier (~50 submissions/mo); a plain `mailto:` link to a free inbox.
+- Newsletter: `<section id="newsletter">` on home and about.
+  Free options: Buttondown free tier (up to 100 subscribers), MailerLite free tier (up to ~1,000 subscribers), Kit (ConvertKit) free tier.
+- Edit the placeholder copy in `build.py` (`NEWS` and the contact page block), then rebuild.
 
-Rebuild `site/` from the library:
+## Before deploying
+- Disclaimer text comes from library/DISCLAIMER-draft.md and still needs David's sign-off (consider a lawyer review).
+- Library content hasn't had a human technical review yet.
+- Question H1s, symptom groups and related links are set in the `Q` table in build.py.
+- Optional: add an og:image (none yet), favicon, and a contact email address.
 
-```bash
-python build.py
-```
-
-The script removes the existing `site/` directory and writes it again. It uses only the Python standard library.
-
-## Validate
-
-Check the generated pages:
-
-```bash
-python validate.py
-```
-
-Validation confirms that every page's JSON-LD parses, internal links and sitemap URLs resolve to files, titles and descriptions are unique, and each page includes the mechanic disclaimer, a canonical URL, and an Open Graph title. The command exits with status 0 when those checks pass.
-
-## Deploy
-
-The site deploys on Vercel as prebuilt static files. `vercel.json` sets `outputDirectory` to `site`, with no framework and no build step, so Vercel serves the committed `site/` directory as-is. Run the build and validate commands above, then commit the regenerated `site/` output, before deploying.
-
-## Still to wire up
-
-- Contact form: the contact page has a disabled form in `<section id="contact-form">`. It is not connected to any service. Edit the contact block in `build.py`, then rebuild.
-- Newsletter: home and about include a placeholder `<section id="newsletter">`. Edit the `NEWS` string in `build.py`, then rebuild.
-- Disclaimer text comes from `library/DISCLAIMER-draft.md` and still needs a review before it is treated as final.
-- Symptom groups, question headings, and related links are set in the `Q` table in `build.py`.
+## Newsletter (Resend, double opt-in)
+- `api/subscribe.js` (POST) emails a signed confirmation link. `api/confirm.js` adds the contact to the Resend audience only after the link is clicked.
+- Vercel env vars: `RESEND_API_KEY` (secret), `RESEND_AUDIENCE_ID`, `NEWSLETTER_SECRET` (random 32+ chars), `NEWSLETTER_FROM` (e.g. `My Broken Boat <newsletter@news.mybrokenboat.com>`, on a Resend-verified domain).
+- Pages: /newsletter/, /newsletter/check-email/, /newsletter/confirmed/. Drafts are in `newsletter/`.

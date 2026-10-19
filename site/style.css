@@ -1,3 +1,4 @@
+.newsletter{background:#fff;border:1px solid #dde5ec;border-radius:8px;padding:1rem;margin-top:2rem}.newsletter input[type=email]{padding:.5rem;font:inherit;min-width:16rem}.newsletter button{padding:.5rem 1rem;font:inherit;background:#0b3954;color:#fff;border:0;border-radius:4px}.fine{font-size:.85rem;opacity:.8}
 *{box-sizing:border-box}body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1b2733;background:#f7f9fb}
 a{color:#0b5fa5}header{background:#0b3954;color:#fff}header .w{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1.2rem;padding:.8rem 1rem}
 header a{color:#fff;text-decoration:none}.brand{font-weight:800;font-size:1.3rem}.tag{opacity:.8;font-size:.95rem}nav{margin-left:auto;display:flex;gap:1rem;font-size:.95rem}
