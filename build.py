@@ -10,14 +10,14 @@ Q={ # slug: (question H1, group, related)
 "03-starts-then-dies":("Why does my outboard start and then die?","Won't start",["15-primer-bulb","11-carb-gummed-after-storage","04-rough-idle"]),
 "04-rough-idle":("Why does my outboard idle rough or surge?","Runs poorly",["11-carb-gummed-after-storage","20-spark-plug-fouling","12-ethanol-fuel-issues"]),
 "05-stalls-under-throttle":("Why does my outboard bog or stall when I throttle up?","Runs poorly",["10-water-in-fuel","15-primer-bulb","08-loss-of-power-wont-plane"]),
-"06-no-telltale-stream":("Why is there no tell-tale (pee) stream from my outboard?","Overheating & cooling",["07-overheating-alarm","14-spring-startup","25-submerged-motor"]),
-"07-overheating-alarm":("Why is my outboard overheating or sounding the alarm?","Overheating & cooling",["06-no-telltale-stream","19-excessive-smoke","08-loss-of-power-wont-plane"]),
-"08-loss-of-power-wont-plane":("Why has my outboard lost power or won't plane?","Runs poorly",["09-prop-cavitation-ventilation","05-stalls-under-throttle","17-trim-tilt"]),
+"06-no-telltale-stream":("Why is there no tell-tale (pee) stream from my outboard?","Overheating & cooling",["07-overheating-alarm","26-water-pump-impeller","14-spring-startup","25-submerged-motor"]),
+"07-overheating-alarm":("Why is my outboard overheating or sounding the alarm?","Overheating & cooling",["06-no-telltale-stream","26-water-pump-impeller","27-warning-horn-beeping","19-excessive-smoke","08-loss-of-power-wont-plane"]),
+"08-loss-of-power-wont-plane":("Why has my outboard lost power or won't plane?","Runs poorly",["09-prop-cavitation-ventilation","05-stalls-under-throttle","17-trim-tilt","27-warning-horn-beeping"]),
 "09-prop-cavitation-ventilation":("Why does my prop slip, ventilate, or cavitate?","Runs poorly",["08-loss-of-power-wont-plane","17-trim-tilt","18-shifting-problems"]),
-"10-water-in-fuel":("How do I tell if there's water in my outboard fuel?","Fuel problems",["12-ethanol-fuel-issues","05-stalls-under-throttle","03-starts-then-dies"]),
+"10-water-in-fuel":("How do I tell if there's water in my outboard fuel?","Fuel problems",["12-ethanol-fuel-issues","05-stalls-under-throttle","03-starts-then-dies","27-warning-horn-beeping"]),
 "11-carb-gummed-after-storage":("How do I fix a carburetor gummed up after storage?","Fuel problems",["12-ethanol-fuel-issues","14-spring-startup","04-rough-idle"]),
 "12-ethanol-fuel-issues":("What problems does ethanol (E10) fuel cause in outboards?","Fuel problems",["10-water-in-fuel","11-carb-gummed-after-storage","13-winterizing"]),
-"13-winterizing":("How do I winterize an outboard motor?","Seasonal care",["14-spring-startup","24-gear-oil-milky","12-ethanol-fuel-issues"]),
+"13-winterizing":("How do I winterize an outboard motor?","Seasonal care",["14-spring-startup","24-gear-oil-milky","12-ethanol-fuel-issues","26-water-pump-impeller"]),
 "14-spring-startup":("How do I start my outboard after winter storage?","Seasonal care",["13-winterizing","11-carb-gummed-after-storage","16-battery-charging"]),
 "15-primer-bulb":("Why won't my primer bulb firm up?","Fuel problems",["03-starts-then-dies","02-cranks-wont-fire","10-water-in-fuel"]),
 "16-battery-charging":("Why is my outboard battery not charging?","Electrical & controls",["01-wont-crank","17-trim-tilt","14-spring-startup"]),
@@ -30,6 +30,8 @@ Q={ # slug: (question H1, group, related)
 "23-pull-start-recoil":("Why won't my outboard pull-start cord work?","Won't start",["02-cranks-wont-fire","22-choke-enrichment","21-kill-switch-lanyard"]),
 "24-gear-oil-milky":("Why is my outboard gear oil milky?","Seasonal care",["18-shifting-problems","13-winterizing","25-submerged-motor"]),
 "25-submerged-motor":("What do I do if my outboard was submerged?","Emergencies",["24-gear-oil-milky","06-no-telltale-stream","16-battery-charging"]),
+"26-water-pump-impeller":("How often should I replace my outboard water pump impeller?","Overheating & cooling",["06-no-telltale-stream","07-overheating-alarm","13-winterizing"]),
+"27-warning-horn-beeping":("Why is my outboard beeping?","Electrical & controls",["07-overheating-alarm","10-water-in-fuel","16-battery-charging"]),
 }
 GROUPS=["Won't start","Runs poorly","Overheating & cooling","Fuel problems","Electrical & controls","Seasonal care","Emergencies"]
 e=html.escape
@@ -79,7 +81,7 @@ def main():
     os.makedirs(OUT); open(f"{OUT}/style.css","w").write(CSS)
     probs={}
     for p in sorted(glob.glob(f"{LIB}/[0-9]*.md")):
-        slug=os.path.basename(p)[:-3]; d=parse(p); probs[slug]=d
+        slug=os.path.basename(p)[:-3]; d=parse(p); d["mod"]=datetime.date.fromtimestamp(os.path.getmtime(p)).isoformat(); probs[slug]=d
     pages=[]
     for slug,d in probs.items():
         q,grp,rel=Q[slug]; path=f"/problems/{slug[3:]}/"; d["path"]=path; d["q"]=q
@@ -89,10 +91,12 @@ def main():
         cl=[plain(x) for x in (causes["items"] if causes else [])][:3]
         fx=[plain(x) for x in fixes["items"]]
         ans=(f"Most often: {', '.join(c[0].lower()+c[1:] for c in cl)}. " if cl else "")+f"Start here: {fx[0]} If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure."
+        qa=sec(d,"quick answer")
+        if qa and qa["text"]: ans=plain(" ".join(qa["text"]))
         d["answer"]=ans
         body=f"<h1>{e(q)}</h1><p><em>{e(d['title'])}</em>{(' &middot; Symptom: '+e(symptom)) if symptom else ''}</p><p class=\"answer\"><strong>Quick answer:</strong> {e(ans)}</p>"
         for s in d["sections"]:
-            if s is srcs: continue
+            if s is srcs or s is qa: continue
             body+=f"<h2>{e(s['h'])}</h2>"
             for t in s["text"]: body+=f"<p>{inline(t)}</p>"
             if s["items"]: body+=f"<{s['kind']}>"+"".join(f"<li>{inline(i)}</li>" for i in s["items"])+f"</{s['kind']}>"
@@ -131,7 +135,8 @@ def main():
     page("/newsletter/confirmed/",f"You're subscribed | {NAME}","Your My Broken Boat newsletter subscription is confirmed.",
       "<h1>You're subscribed</h1><p>Thanks! You'll get our next email. Every email has an unsubscribe link.</p><p><a href=\"/\">Back to problems</a></p>")
     allp=["/","/about/","/contact/","/disclaimer/","/newsletter/"]+[p for p,_,_ in pages]
-    open(f"{OUT}/sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>{BASE}{p}</loc><lastmod>{TODAY}</lastmod></url>\n" for p in allp)+"</urlset>\n")
+    mods={d["path"]:d["mod"] for d in probs.values()}; newest=max(list(mods.values())+[datetime.date.fromtimestamp(os.path.getmtime(__file__)).isoformat()])
+    open(f"{OUT}/sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url><loc>{BASE}{p}</loc><lastmod>{mods.get(p,newest)}</lastmod></url>\n" for p in allp)+"</urlset>\n")
     open(f"{OUT}/robots.txt","w").write(f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /newsletter/check-email/\nDisallow: /newsletter/confirmed/\n\nSitemap: {BASE}/sitemap.xml\n")
     llm=f"# {NAME}\n\n> {TAG}: free, plain-English troubleshooting for common outboard boat motor problems. Each page has a short quick answer, likely causes, safe owner checks, parts/tools, when to call a marine mechanic, and source citations. General information only; specs are model-specific, so follow the owner's manual. When in doubt, see a marine mechanic.\n\n"
     for g in GROUPS:

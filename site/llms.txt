@@ -23,6 +23,7 @@
 
 - [Why is there no tell-tale (pee) stream from my outboard?](https://mybrokenboat.com/problems/no-telltale-stream/): Most often: telltale outlet plugged by debris/insects/salt, lower-unit water intake screens blocked (weeds, mud, bag), worn/failed water pump impeller. Start here: Shut engine off promptly if alarm or no stream. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
 - [Why is my outboard overheating or sounding the alarm?](https://mybrokenboat.com/problems/overheating-alarm/): Most often: blocked water intake, failed impeller, stuck thermostat. Start here: Throttle down, neutral, shut off. Don't "baby it home." If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [How often should I replace my outboard water pump impeller?](https://mybrokenboat.com/problems/water-pump-impeller/): Inspect the water pump impeller every year and replace it every 1 to 3 seasons, or right away if the motor overheated or ran dry. Suzuki's guideline is inspect at 200 hours or 1 year and replace at 300 hours or 3 years; Mercury lists 300 hours or 3 years on many models; many mechanics replace it every season or two in salt, sandy or muddy water. Your owner's manual interval wins.
 
 ## Fuel problems
 
@@ -37,6 +38,7 @@
 - [Why isn't my power trim/tilt working?](https://mybrokenboat.com/problems/trim-tilt/): Most often: blown PTT fuse, weak battery / loose or corroded connections, manual release valve not fully closed or leaking (appears in most rows of Suzuki's table). Start here: Check battery voltage and connections. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
 - [Why is my outboard hard to shift or not shifting?](https://mybrokenboat.com/problems/shifting-problems/): Most often: shifting at above idle RPM, helm-to-engine shift cable stiff, kinked, or tight-radius bends, corrosion/binding at the engine-side linkage. Start here: Only shift at idle, with a firm, decisive motion. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
 - [Is my kill switch or lanyard stopping my outboard?](https://mybrokenboat.com/problems/kill-switch-lanyard/): Most often: lanyard clip missing/loose, wrong clip type, corroded/damaged stop switch or wiring. Start here: Attach lanyard and clip fully. If that doesn't fix it, work through the checks below, and see a marine mechanic if you're unsure.
+- [Why is my outboard beeping?](https://mybrokenboat.com/problems/warning-horn-beeping/): A beeping outboard is a warning, not a glitch: throttle back, shift to neutral, and read the warning light or display. A continuous horn usually means a critical problem like overheating, low oil pressure, or no cooling water, so stop the engine and check. Short intermittent beeps usually mean something less urgent, like water in the fuel filter or low oil level. One short beep at key-on is a normal self-test.
 
 ## Seasonal care
 
