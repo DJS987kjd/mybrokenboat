@@ -27,4 +27,6 @@ Internal research draft, not published. Specs are model-specific: always check y
 - [Pull-start (recoil) problems](23-pull-start-recoil.md)
 - [Milky gear oil / water in lower unit](24-gear-oil-milky.md)
 - [Motor dunked / submerged](25-submerged-motor.md)
+- [Water pump impeller: when to replace it](26-water-pump-impeller.md)
+- [Warning horn / beeping outboard](27-warning-horn-beeping.md)
 - [DISCLAIMER (draft)](DISCLAIMER-draft.md)
